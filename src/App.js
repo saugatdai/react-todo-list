@@ -29,7 +29,7 @@ class App extends React.Component {
       item: '',
       id: uuid(),
       editItem: false
-    }, () => console.log(this.state));
+    });
   };
   clearList = (e) => { console.log('clearList') }
   handleDelete = (id) => { console.log(`handleDelete ${id}`) }
@@ -44,7 +44,7 @@ class App extends React.Component {
               todo input
               </h3>
             <TodoInput item={this.state.item} handleChange={this.handleChange} handleSubmit={this.handleSubmit} editItem={this.state.editItem} />
-            <TodoList items={this.state.items} clearList={this.clearList} handleDelete={this.handleDelete} handelEdit={this.handelEdit} />
+            <TodoList items={this.state.items} clearList={this.clearList} handleDelete={this.handleDelete} handleEdit={this.handelEdit} />
           </div>
         </div>
       </div>
