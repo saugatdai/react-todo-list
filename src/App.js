@@ -31,14 +31,23 @@ class App extends React.Component {
       editItem: false
     });
   };
-  clearList = (e) => { this.setState({items: []}); }
-  handleDelete = (id) => { 
+  clearList = (e) => { this.setState({ items: [] }); }
+  handleDelete = (id) => {
     const filteredItems = this.state.items.filter(item => id !== item.id);
     this.setState({
       items: filteredItems
     });
-   }
-  handelEdit = (id) => { console.log(`handleEdit ${id}`) }
+  }
+  handleEdit = (id) => {
+    const filteredItems = this.state.items.filter(item => id !== item.id);
+    const selectedItem = this.state.items.find(item => item.id === id);
+    this.setState({
+      items: filteredItems,
+      item: selectedItem.title,
+      id: id,
+      editItem: true
+    });
+  }
 
   render() {
     return (
@@ -49,7 +58,7 @@ class App extends React.Component {
               todo input
               </h3>
             <TodoInput item={this.state.item} handleChange={this.handleChange} handleSubmit={this.handleSubmit} editItem={this.state.editItem} />
-            <TodoList items={this.state.items} clearList={this.clearList} handleDelete={this.handleDelete} handleEdit={this.handelEdit} />
+            <TodoList items={this.state.items} clearList={this.clearList} handleDelete={this.handleDelete} handleEdit={this.handleEdit} />
           </div>
         </div>
       </div>
