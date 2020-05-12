@@ -31,8 +31,13 @@ class App extends React.Component {
       editItem: false
     });
   };
-  clearList = (e) => { console.log('clearList') }
-  handleDelete = (id) => { console.log(`handleDelete ${id}`) }
+  clearList = (e) => { this.setState({items: []}); }
+  handleDelete = (id) => { 
+    const filteredItems = this.state.items.filter(item => id !== item.id);
+    this.setState({
+      items: filteredItems
+    });
+   }
   handelEdit = (id) => { console.log(`handleEdit ${id}`) }
 
   render() {
